@@ -1,24 +1,12 @@
 // src/components/Header.jsx
 import React from "react";
+import TopBar from "./TopBar";
 
 const Header = () => {
   return (
     <header className="w-full">
       {/* Top Govt Strip */}
-      <div className="bg-gray-100 border-b text-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
-          <div className="flex items-center gap-3">
-            <span className="font-medium text-gray-700">Government of Rajasthan</span>
-          </div>
-          <div className="flex items-center gap-4 text-gray-600">
-            <button className="px-2 py-1 border rounded">A+</button>
-            <button className="px-2 py-1 border rounded">A-</button>
-            <button className="px-2 py-1 border rounded">A</button>
-            <button className="bg-black text-white px-2 py-1 rounded">Dark Mode</button>
-            <span>हिंदी</span>
-          </div>
-        </div>
-      </div>
+      <TopBar />
 
       {/* Combined Header Row */}
 <div className="w-full bg-green-700 text-white">
