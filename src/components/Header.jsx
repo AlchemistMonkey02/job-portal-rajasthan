@@ -1,12 +1,9 @@
 // src/components/Header.jsx
 import React from "react";
-import TopBar from "./TopBar";
 
 const Header = () => {
   return (
     <header className="w-full">
-      {/* Top Govt Strip */}
-      <TopBar />
 
       {/* Combined Header Row */}
 <div className="w-full bg-green-700 text-white">
