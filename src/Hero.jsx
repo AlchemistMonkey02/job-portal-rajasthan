@@ -1,36 +1,128 @@
 import React from "react";
+import { motion } from "framer-motion";
+import heroImg from "./assets/hero.png";
 
-const Hero = () => {
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
+const Home = () => {
   return (
-    <section
-      className="h-[85vh] bg-cover bg-center relative"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1581090700227-1e8e6c04c2c3')",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+    <>
+      {/* ================= HERO ================= */}
+      <section
+        className="h-[90vh] bg-cover bg-center relative flex items-center"
+        style={{ backgroundImage: `url(${heroImg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
-        <div className="text-white max-w-xl">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-7xl mx-auto px-6 text-white"
+        >
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Berozgar Rajasthan
           </h2>
 
-          <p className="text-lg md:text-xl mb-6 text-gray-200">
+          <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-xl">
             Empowering citizens with employment opportunities, government
-            schemes, and career resources across Rajasthan.
+            schemes, and career growth across Rajasthan.
           </p>
 
-          <button className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-md font-medium transition">
-            Explore Opportunities
+          <button className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-medium shadow-lg hover:scale-105 transition">
+            Explore Opportunities →
           </button>
+        </motion.div>
+      </section>
+
+      {/* ================= VISION & MISSION ================= */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-100 text-center">
+        <h2 className="text-4xl font-bold text-green-700 mb-12">
+          Our Vision, Mission & Approach
+        </h2>
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 px-6">
+          {["Vision", "Mission", "Approach"].map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition hover:-translate-y-2"
+            >
+              <div className="text-green-600 text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-semibold mb-3">
+                Our {item}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Building strong employment ecosystems through innovation,
+                transparency, and collaboration across Rajasthan.
+              </p>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ================= SERVICES ================= */}
+      <section className="py-20 text-center">
+        <h2 className="text-4xl font-bold text-gray-800 mb-12">
+          Recruitment Services
+        </h2>
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+          {[
+            "Government Jobs",
+            "Skill Development",
+            "Private Jobs",
+          ].map((title, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white p-8 rounded-xl shadow-md hover:shadow-2xl transition border-t-4 border-green-600"
+            >
+              <h3 className="text-lg font-semibold mb-2">{title}</h3>
+              <p className="text-gray-600 text-sm">
+                Explore opportunities and grow your career with Rajasthan.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= NEWS ================= */}
+      <section className="py-20 bg-gray-100">
+        <h2 className="text-4xl font-bold text-center text-green-700 mb-12">
+          News & Events
+        </h2>
+
+        <div className="max-w-5xl mx-auto px-6 space-y-6">
+          {[
+            "New Job Portal Launched",
+            "Mega Job Fair 2026",
+            "Skill Training Program",
+          ].map((news, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition border-l-4 border-green-600"
+            >
+              <h4 className="font-semibold text-lg">{news}</h4>
+              <p className="text-sm text-gray-600 mt-1">
+                Latest updates from Rajasthan government employment initiatives.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
-export default Hero;
+export default Home;
