@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TopBar = () => {
   const [fontSize, setFontSize] = useState(16);
   const [lang, setLang] = useState("en");
+
+  // Apply font size globally
+  useEffect(() => {
+    document.body.style.fontSize = `${fontSize}px`;
+  }, [fontSize]);
 
   // Font controls
   const increaseFont = () => setFontSize((prev) => prev + 2);
@@ -15,10 +20,7 @@ const TopBar = () => {
   };
 
   return (
-    <div
-      className="w-full bg-gray-100 border-b text-sm"
-      style={{ fontSize: `${fontSize}px` }}
-    >
+    <div className="w-full bg-gray-100 border-b text-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
 
         {/* LEFT */}
