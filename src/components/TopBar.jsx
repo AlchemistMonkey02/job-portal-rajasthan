@@ -4,7 +4,6 @@ const TopBar = () => {
   const [fontSize, setFontSize] = useState(16);
   const [lang, setLang] = useState("en");
 
-  // Apply font size globally
   useEffect(() => {
     document.body.style.fontSize = `${fontSize}px`;
   }, [fontSize]);

@@ -1,16 +1,15 @@
-import Header from "./components/Header";
-import Hero from "./Hero";
-import Footer from "./components/Footer";
-import TopBar from "./components/TopBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Hero";
+import Contact from "./contact";
 
 function App() {
   return (
-    <div>
-      <TopBar />
-      <Header />
-      <Hero />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -8,11 +8,10 @@ const Footer = () => {
         {/* About */}
         <div>
           <h3 className="font-semibold text-white mb-3">
-            Berozgar Rajasthan
+            Rozgar Rajasthan
           </h3>
           <p className="text-sm text-white">
-            Dedicated to providing employment information, schemes, and
-            resources for the people of Rajasthan.
+            Dedicated to providing employment information, schemes and resources for the people of Rajasthan.
           </p>
         </div>
 
@@ -20,11 +19,9 @@ const Footer = () => {
         <div>
           <h4 className="font-semibold text-white mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm text-white">
-            <li>State Portal</li>
-            <li>National Portal</li>
-            <li>Sitemap</li>
-            <li>Disclaimer</li>
-            <li>Privacy Policy</li>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Contact Us</li>
           </ul>
         </div>
 

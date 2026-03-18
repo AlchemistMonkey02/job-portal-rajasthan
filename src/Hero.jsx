@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiEye, FiTarget, FiSettings } from "react-icons/fi";
+
+import TopBar from "./components/TopBar";
+import NavBar from "./components/Header";
+import Footer from "./components/Footer";
+
 import heroImg from "./assets/hero.jpg";
 import govt from "./assets/govt.webp";
 import skill from "./assets/skill.webp";
 import privateImg from "./assets/private.webp";
-import job from "./assets/job.png";
 
 // Animation
 const fadeDown = {
@@ -22,15 +26,16 @@ const Hero = () => {
 
   return (
     <>
+      <TopBar />
+      <NavBar />
       {/* ================= HERO ================= */}
       <section
         className="h-[100vh] bg-cover bg-center relative flex items-center"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
-        {/* LEFT GRADIENT OVERLAY */}
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
 
-        {/* CONTENT */}
         <div className="relative z-10 w-full px-6 md:px-16">
           <motion.div
             variants={fadeDown}
@@ -66,7 +71,6 @@ const Hero = () => {
           VISION MISSION
         </h1>
 
-        {/* HEADING */}
         <motion.div
           variants={fadeDown}
           initial="hidden"
@@ -81,48 +85,39 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
           {[
             {
-              title: "Vision",
+              title: "Our Vision",
               icon: <FiEye />,
-              desc: "To create a strong employment ecosystem empowering every citizen of Rajasthan.",
+              desc: `"All round and large scale development requires a combination of capacities and efforts which cannot be provided by any single agency or system. To ensure that the benefits of development reach the poor in particular and the people in general it is necessary the government and NGOs pool their strengths and become partners"`,
             },
             {
-              title: "Mission",
+              title: "Our Mission",
               icon: <FiTarget />,
-              desc: "Provide accessible job opportunities, skill development, and career growth support.",
+              desc: `ARAVALI intends to ensure that there are an increased number of effective voluntary organisations working closely with marginalized communities in every district of Rajasthan and that an enabling environment is developed within which the government and these organisations can form effective partnerships.`,
             },
             {
               title: "Approach",
               icon: <FiSettings />,
-              desc: "Leveraging technology and partnerships to deliver transparent and efficient services.",
+              desc: `ARAVALI's approach to its mission is two pronged – first, enhancing human and institutional capacities of voluntary organisations and second, by facilitating build conducive environment for collaboration.`,
             },
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition group"
+              className="border border-gray-300 rounded-xl p-10 text-center bg-white hover:shadow-md transition duration-300"
             >
-              {/* TOP GRADIENT */}
-              <div className="bg-gradient-to-br from-green-600 via-green-500 to-green-600 p-6 h-40 flex flex-col justify-between">
-                {/* ICON */}
-                <div className="text-white text-3xl opacity-90">
-                  {item.icon}
-                </div>
-
-                {/* TITLE */}
-                <h3 className="text-white text-lg font-semibold">
-                  {item.title}
-                </h3>
+              {/* ICON */}
+              <div className="text-green-600 text-5xl mb-6 flex justify-center">
+                {item.icon}
               </div>
 
-              {/* CONTENT */}
-              <div className="p-6">
-                <h4 className="text-lg font-semibold mb-2 text-gray-800">
-                  {item.title}
-                </h4>
+              {/* TITLE */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+                {item.title}
+              </h3>
 
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+              {/* DESCRIPTION */}
+              <p className="text-gray-600 text-sm leading-relaxed max-w-md mx-auto">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -173,7 +168,6 @@ const Hero = () => {
                 key={i}
                 className="group relative cursor-pointer rounded-3xl p-6 overflow-hidden transition duration-300 flex items-center justify-between gap-6 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-green-100 hover:border-green-600 hover:shadow-xl"
               >
-                {/* LEFT CONTENT */}
                 <div className="z-10 flex flex-col items-start text-left">
                   <p className="text-sm text-gray-300 mb-3 group-hover:text-gray-500">
                     {item.tag}
@@ -213,17 +207,13 @@ const Hero = () => {
         className="py-24 relative bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/assets/news-bg.jpg')" }}
       >
-        {/* OVERLAY */}
         <div className="absolute inset-0 bg-white/90"></div>
 
-        {/* BACKGROUND TEXT */}
         <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[90px] font-bold text-gray-300 opacity-20 whitespace-nowrap tracking-widest">
           NEWS & EVENTS
         </h1>
 
-        {/* CONTENT */}
         <div className="relative z-10 text-center px-6">
-          {/* HEADING WITH ANIMATION */}
           <motion.div
             variants={fadeDown}
             initial="hidden"
@@ -240,7 +230,7 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-6 relative z-10 max-w-5xl mx-auto px-6">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
             {[
               "New Job Portal Launched",
               "Mega Job Fair 2026",
@@ -248,18 +238,57 @@ const Hero = () => {
             ].map((news, i) => (
               <div
                 key={i}
-                className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition border-l-4 border-green-600"
+                className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition duration-300"
               >
-                <h4 className="font-semibold text-lg">{news}</h4>
-                <p className="text-sm text-gray-600 mt-1">
+                <h4 className="font-semibold text-lg text-gray-900 mb-3">
+                  {news}
+                </h4>
+                <p className="text-sm text-gray-600 mb-6">
                   Latest updates from Rajasthan government employment
                   initiatives.
                 </p>
+
+                <button className="flex items-center gap-2 text-green-700 font-medium">
+                  View jobs →
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ===== STATS BAR SECTION ===== */}
+      <section className="w-full bg-[#f5f1ec] py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 text-center divide-x divide-gray-300">
+            <div className="px-4">
+              <div className="text-green-600 text-3xl mb-2">⬛</div>
+              <h2 className="text-2xl font-bold text-gray-900">5M+</h2>
+              <p className="text-sm text-gray-500 mt-1">pages generated</p>
+            </div>
+
+            <div className="px-4">
+              <div className="text-green-600 text-3xl mb-2">↻</div>
+              <h2 className="text-2xl font-bold text-gray-900">3.1x</h2>
+              <p className="text-sm text-gray-500 mt-1">higher reply rate</p>
+            </div>
+
+            <div className="px-4">
+              <div className="text-green-600 text-3xl mb-2">⏱</div>
+              <h2 className="text-2xl font-bold text-gray-900">2.5hrs</h2>
+              <p className="text-sm text-gray-500 mt-1">saved per campaign</p>
+            </div>
+
+            <div className="px-4">
+              <div className="text-green-600 text-3xl mb-2">📅</div>
+              <h2 className="text-2xl font-bold text-gray-900">12k</h2>
+              <p className="text-sm text-gray-500 mt-1">meetings booked</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </>
   );
 };
