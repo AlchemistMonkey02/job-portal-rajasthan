@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiSearch, FiBriefcase, FiMapPin } from "react-icons/fi";
+import { FiEye, FiTarget, FiSettings } from "react-icons/fi";
 import heroImg from "./assets/hero.jpg";
+import govt from "./assets/govt.webp";
+import skill from "./assets/skill.webp";
+import privateImg from "./assets/private.webp";
 import job from "./assets/job.png";
 
 // Animation
@@ -14,160 +18,229 @@ const fadeDown = {
 };
 
 const Hero = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <>
       {/* ================= HERO ================= */}
-      <section className="h-[100vh] bg-white flex items-center">
-        <div className="w-full px-6 md:px-16 grid md:grid-cols-2 gap-10 items-center">
-          
-          {/* LEFT CONTENT */}
+      <section
+        className="h-[100vh] bg-cover bg-center relative flex items-center"
+        style={{ backgroundImage: `url(${heroImg})` }}
+      >
+        {/* LEFT GRADIENT OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+
+        {/* CONTENT */}
+        <div className="relative z-10 w-full px-6 md:px-16">
           <motion.div
             variants={fadeDown}
             initial="hidden"
             whileInView="visible"
-            className="max-w-xl"
+            className="max-w-2xl text-white"
           >
-            <p className="text-green-700 font-semibold uppercase mb-4 tracking-wide">
-              India’s #1 Job Platform
+            <p className="text-green-400 font-semibold uppercase mb-4 tracking-wide">
+              Government of Rajasthan Initiative
             </p>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Your job search ends here
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Rozgar Rajasthan
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 mb-8">
-              Discover 50 lakh+ career opportunities
+            <p className="text-lg md:text-xl text-gray-200 mb-8">
+              Empowering citizens with employment opportunities, skill
+              development, and government schemes for sustainable growth across
+              Rajasthan.
             </p>
 
-            {/* SEARCH BAR */}
-            <div className="bg-gray-100 rounded-2xl shadow-sm flex flex-col md:flex-row items-stretch md:items-center overflow-hidden max-w-3xl">
-              
-              <div className="flex items-center px-5 flex-1">
-                <FiSearch className="text-gray-400 mr-3 text-lg" />
-                <input
-                  type="text"
-                  placeholder="Search jobs by 'skill'"
-                  className="w-full py-4 bg-transparent outline-none text-gray-700"
-                />
-              </div>
-
-              <div className="hidden md:block h-8 w-px bg-gray-300"></div>
-
-              <div className="flex items-center px-5 flex-1">
-                <FiBriefcase className="text-gray-400 mr-3 text-lg" />
-                <input
-                  type="text"
-                  placeholder="Your Experience"
-                  className="w-full py-4 bg-transparent outline-none text-gray-700"
-                />
-              </div>
-
-              <div className="hidden md:block h-8 w-px bg-gray-300"></div>
-
-              <div className="flex items-center px-5 flex-1">
-                <FiMapPin className="text-gray-400 mr-3 text-lg" />
-                <input
-                  type="text"
-                  placeholder="Search for an area or city"
-                  className="w-full py-4 bg-transparent outline-none text-gray-700"
-                />
-              </div>
-
-              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 font-medium whitespace-nowrap rounded-r-2xl">
-                Search jobs
-              </button>
-            </div>
+            <button className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-md font-medium shadow-md transition">
+              Explore More →
+            </button>
           </motion.div>
-
-          {/* RIGHT IMAGE */}
-          <div className="flex justify-center md:justify-end">
-            <img
-              src={heroImg}
-              alt="Hero"
-              className="w-full max-h-[100vh] object-contain"
-            />
-          </div>
         </div>
       </section>
 
       {/* ================= VISION & MISSION ================= */}
-      <section className="py-20 relative bg-gradient-to-r from-green-100 to-white overflow-hidden">
+      <section className="py-20 bg-gray-50 relative overflow-hidden">
+        {/* BACKGROUND TEXT */}
         <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[80px] font-bold text-gray-300 opacity-20 whitespace-nowrap">
-          OUR VISION MISSION
+          VISION MISSION
         </h1>
 
-        <div className="relative z-10 text-center">
-          <h2 className="text-4xl font-bold text-green-700 mb-12">
+        {/* HEADING */}
+        <motion.div
+          variants={fadeDown}
+          initial="hidden"
+          whileInView="visible"
+          className="relative z-10 max-w-3xl mx-auto text-center mb-14"
+        >
+          <h2 className="text-4xl font-bold text-green-700">
             Our Vision, Mission & Approach
           </h2>
+        </motion.div>
 
-          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 px-6">
-            {["Vision", "Mission", "Approach"].map((item, i) => (
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+          {[
+            {
+              title: "Vision",
+              icon: <FiEye />,
+              desc: "To create a strong employment ecosystem empowering every citizen of Rajasthan.",
+            },
+            {
+              title: "Mission",
+              icon: <FiTarget />,
+              desc: "Provide accessible job opportunities, skill development, and career growth support.",
+            },
+            {
+              title: "Approach",
+              icon: <FiSettings />,
+              desc: "Leveraging technology and partnerships to deliver transparent and efficient services.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition group"
+            >
+              {/* TOP GRADIENT */}
+              <div className="bg-gradient-to-br from-green-600 via-green-500 to-green-600 p-6 h-40 flex flex-col justify-between">
+                {/* ICON */}
+                <div className="text-white text-3xl opacity-90">
+                  {item.icon}
+                </div>
+
+                {/* TITLE */}
+                <h3 className="text-white text-lg font-semibold">
+                  {item.title}
+                </h3>
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-6">
+                <h4 className="text-lg font-semibold mb-2 text-gray-800">
+                  {item.title}
+                </h4>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= SERVICES ================= */}
+      <section className="py-24 relative bg-green-800 overflow-hidden rounded-t-[40px]">
+        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[90px] font-bold text-white opacity-10 whitespace-nowrap tracking-widest">
+          RECRUITEMENT SERVICES
+        </h1>
+
+        <div className="relative z-10 text-center px-6">
+          <motion.div
+            variants={fadeDown}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
+              Recruitment Services
+            </h2>
+
+            <p className="text-gray-400 mt-4 text-sm">
+              Connecting talent with the right opportunities across Rajasthan
+            </p>
+          </motion.div>
+
+          {/* CARDS */}
+          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Government Jobs",
+                //tag: "TRENDING AT #1",
+                img: govt,
+              },
+              {
+                title: "Skill Based Jobs",
+                //tag: "TRENDING AT #2",
+                img: skill,
+              },
+              {
+                title: "Private Jobs",
+                //tag: "TRENDING AT #3",
+                img: privateImg,
+              },
+            ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition hover:-translate-y-2"
+                className="group relative cursor-pointer rounded-3xl p-6 overflow-hidden transition duration-300 flex items-center justify-between gap-6 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-green-100 hover:border-green-600 hover:shadow-xl"
               >
-                <h3 className="text-xl font-semibold mb-3">
-                  Our {item}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Building strong employment ecosystems through innovation and collaboration.
-                </p>
+                {/* LEFT CONTENT */}
+                <div className="z-10 flex flex-col items-start text-left">
+                  <p className="text-sm text-gray-300 mb-3 group-hover:text-gray-500">
+                    {item.tag}
+                  </p>
+
+                  <h3 className="text-xl font-bold mb-5 text-white group-hover:text-green-700">
+                    {item.title}
+                  </h3>
+
+                  {/* BUTTON */}
+                  <button className="px-5 py-2 rounded-lg text-sm transition flex items-center gap-2 text-white border border-white/40 group-hover:bg-green-600 group-hover:text-white group-hover:border-green-600">
+                    View all →
+                  </button>
+                </div>
+
+                {/* RIGHT IMAGE */}
+                <div className="relative z-10 flex-shrink-0">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-32 md:w-36 object-contain transition group-hover:scale-105"
+                  />
+                </div>
+
+                {/* BACKGROUND FADED TEXT */}
+                <h1 className="absolute bottom-2 left-4 text-[50px] font-bold text-white opacity-10 whitespace-nowrap pointer-events-none group-hover:text-green-300">
+                  {item.title}
+                </h1>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= SERVICES ================= */}
-      <section
-        className="py-20 text-center relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${job})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
-
-        <div className="relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-12">
-            Recruitment Services
-          </h2>
-
-          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-            {["Government Jobs", "Skill Development", "Private Jobs"].map(
-              (title, i) => (
-                <div
-                  key={i}
-                  className="bg-white p-8 rounded-xl shadow-md hover:shadow-2xl transition border-t-4 border-green-600 hover:scale-105"
-                >
-                  <h3 className="text-lg font-semibold mb-2">
-                    {title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Explore opportunities and grow your career with Rajasthan.
-                  </p>
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* ================= NEWS ================= */}
       <section
-        className="py-20 relative bg-cover bg-center"
+        className="py-24 relative bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/assets/news-bg.jpg')" }}
       >
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-white/90"></div>
 
-        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[80px] font-bold text-gray-300 opacity-20">
+        {/* BACKGROUND TEXT */}
+        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[90px] font-bold text-gray-300 opacity-20 whitespace-nowrap tracking-widest">
           NEWS & EVENTS
         </h1>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-green-700 mb-12">
-            News & Events
-          </h2>
+        {/* CONTENT */}
+        <div className="relative z-10 text-center px-6">
+          {/* HEADING WITH ANIMATION */}
+          <motion.div
+            variants={fadeDown}
+            initial="hidden"
+            whileInView="visible"
+            className="max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-semibold text-green-700 leading-tight">
+              News & Events
+            </h2>
 
-          <div className="space-y-6">
+            <p className="text-gray-600 mt-4 text-sm">
+              Stay updated with the latest announcements, programs, and
+              initiatives
+            </p>
+          </motion.div>
+
+          <div className="space-y-6 relative z-10 max-w-5xl mx-auto px-6">
             {[
               "New Job Portal Launched",
               "Mega Job Fair 2026",
@@ -179,7 +252,8 @@ const Hero = () => {
               >
                 <h4 className="font-semibold text-lg">{news}</h4>
                 <p className="text-sm text-gray-600 mt-1">
-                  Latest updates from Rajasthan government employment initiatives.
+                  Latest updates from Rajasthan government employment
+                  initiatives.
                 </p>
               </div>
             ))}
