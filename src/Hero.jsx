@@ -1,7 +1,20 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import heroImg from "./assets/hero.png";
 import job from "./assets/job.png";
+
+// Animation (TOP → DOWN)
+const fadeDown = {
+  hidden: { opacity: 0, y: -80 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
@@ -13,31 +26,36 @@ const Home = () => {
     <>
       {/* ================= HERO ================= */}
       <section
-        className="h-[90vh] bg-cover bg-center relative flex items-center"
-        style={{ backgroundImage: `url(${heroImg})` }}
+      className="h-[90vh] bg-cover bg-center relative flex items-center"
+      style={{ backgroundImage: `url(${heroImg})` }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+
+      {/* Content */}
+      <motion.div
+        variants={fadeDown}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        className="relative z-10 w-full px-6 md:px-16 text-white flex justify-start"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+        <div className="max-w-xl">
+        <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          Berozgar Rajasthan
+        </h2>
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 max-w-7xl mx-auto px-6 text-white"
-        >
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Berozgar Rajasthan
-          </h2>
+        <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-xl">
+          Empowering citizens with employment opportunities, government
+          schemes, and career growth across Rajasthan.
+        </p>
 
-          <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-xl">
-            Empowering citizens with employment opportunities, government
-            schemes, and career growth across Rajasthan.
-          </p>
-
-          <button className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-medium shadow-lg hover:scale-105 transition">
-            Explore Opportunities →
-          </button>
-        </motion.div>
-      </section>
+        <button className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-medium shadow-lg hover:scale-105 transition">
+          Explore Opportunities →
+        </button>
+        </div>
+      </motion.div>
+    </section>
 
       {/* ================= VISION & MISSION ================= */}
       <section className="py-20 relative bg-gradient-to-r from-green-100 to-white overflow-hidden">
@@ -71,7 +89,7 @@ const Home = () => {
         style={{ backgroundImage: `url(${job})` }}
       >
         {/* Overlay (controls opacity) */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
 
         {/* Content */}
         <div className="relative z-10">
