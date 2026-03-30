@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { FiMail, FiInfo, FiMapPin, FiTrash2 } from "react-icons/fi";
 import contactImg from "./assets/contact.jpg";
 import TopBar from "./components/TopBar";
@@ -23,7 +23,7 @@ const Contact = () => {
 
       <section className="min-h-screen bg-gray-100 py-12 px-4 md:px-6 flex items-center">
         <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
-          <motion.div
+          <Motion.div
             variants={fadeDown}
             initial="hidden"
             whileInView="visible"
@@ -33,7 +33,7 @@ const Contact = () => {
               Get in{" "}
               <span className="underline decoration-yellow-400">touch</span>
             </h1>
-          </motion.div>
+          </Motion.div>
 
           <div className="grid md:grid-cols-2 gap-10 px-6 md:px-10 pb-10 items-center">
             {/* LEFT */}

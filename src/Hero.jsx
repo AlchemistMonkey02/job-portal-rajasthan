@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { FiEye, FiTarget, FiSettings } from "react-icons/fi";
 
 import TopBar from "./components/TopBar";
@@ -22,22 +21,20 @@ const fadeDown = {
 };
 
 const Hero = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <>
       <TopBar />
       <NavBar />
       {/* ================= HERO ================= */}
       <section
-        className="h-[100vh] bg-cover bg-center relative flex items-center"
+        className="min-h-[100svh] bg-cover bg-center relative flex items-center"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
         {/* OVERLAY */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
 
-        <div className="relative z-10 w-full px-6 md:px-16">
-          <motion.div
+        <div className="relative z-10 w-full px-4 sm:px-6 md:px-16">
+          <Motion.div
             variants={fadeDown}
             initial="hidden"
             whileInView="visible"
@@ -60,18 +57,18 @@ const Hero = () => {
             <button className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-md font-medium shadow-md transition">
               Explore More →
             </button>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
       {/* ================= VISION & MISSION ================= */}
       <section className="py-20 bg-gray-50 relative overflow-hidden">
         {/* BACKGROUND TEXT */}
-        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[80px] font-bold text-gray-300 opacity-20 whitespace-nowrap">
+        <h1 className="absolute top-6 sm:top-8 md:top-10 left-1/2 -translate-x-1/2 text-[48px] sm:text-[56px] md:text-[80px] font-bold text-gray-300 opacity-20 whitespace-nowrap leading-none">
           VISION MISSION
         </h1>
 
-        <motion.div
+        <Motion.div
           variants={fadeDown}
           initial="hidden"
           whileInView="visible"
@@ -80,9 +77,9 @@ const Hero = () => {
           <h2 className="text-4xl font-bold text-green-700">
             Our Vision, Mission & Approach
           </h2>
-        </motion.div>
+        </Motion.div>
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-4 sm:px-6">
           {[
             {
               title: "Our Vision",
@@ -125,12 +122,12 @@ const Hero = () => {
 
       {/* ================= SERVICES ================= */}
       <section className="py-24 relative bg-green-800 overflow-hidden rounded-t-[40px]">
-        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[90px] font-bold text-white opacity-10 whitespace-nowrap tracking-widest">
+        <h1 className="absolute top-6 sm:top-8 md:top-10 left-1/2 -translate-x-1/2 text-[48px] sm:text-[64px] md:text-[90px] font-bold text-white opacity-10 whitespace-nowrap tracking-widest leading-none">
           RECRUITEMENT SERVICES
         </h1>
 
-        <div className="relative z-10 text-center px-6">
-          <motion.div
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <Motion.div
             variants={fadeDown}
             initial="hidden"
             whileInView="visible"
@@ -143,7 +140,7 @@ const Hero = () => {
             <p className="text-gray-400 mt-4 text-sm">
               Connecting talent with the right opportunities across Rajasthan
             </p>
-          </motion.div>
+          </Motion.div>
 
           {/* CARDS */}
           <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
@@ -209,12 +206,12 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-white/90"></div>
 
-        <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[90px] font-bold text-gray-300 opacity-20 whitespace-nowrap tracking-widest">
+        <h1 className="absolute top-6 sm:top-8 md:top-10 left-1/2 -translate-x-1/2 text-[48px] sm:text-[64px] md:text-[90px] font-bold text-gray-300 opacity-20 whitespace-nowrap tracking-widest leading-none">
           NEWS & EVENTS
         </h1>
 
-        <div className="relative z-10 text-center px-6">
-          <motion.div
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <Motion.div
             variants={fadeDown}
             initial="hidden"
             whileInView="visible"
@@ -228,9 +225,9 @@ const Hero = () => {
               Stay updated with the latest announcements, programs, and
               initiatives
             </p>
-          </motion.div>
+          </Motion.div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-8">
             {[
               "New Job Portal Launched",
               "Mega Job Fair 2026",
@@ -259,30 +256,30 @@ const Hero = () => {
 
       {/* ===== STATS BAR SECTION ===== */}
       <section className="w-full bg-[#f5f1ec] py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 text-center divide-x divide-gray-300">
-            <div className="px-4">
-              <div className="text-green-600 text-3xl mb-2">⬛</div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 text-center md:divide-x divide-gray-300">
+            <div className="px-2 sm:px-4 flex flex-col items-center justify-center">
+              <div className="text-green-600 text-3xl mb-2 flex items-center justify-center h-12 w-12">⬛</div>
               <h2 className="text-2xl font-bold text-gray-900">5M+</h2>
-              <p className="text-sm text-gray-500 mt-1">pages generated</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">pages generated</p>
             </div>
 
-            <div className="px-4">
-              <div className="text-green-600 text-3xl mb-2">↻</div>
+            <div className="px-2 sm:px-4 flex flex-col items-center justify-center">
+              <div className="text-green-600 text-3xl mb-2 flex items-center justify-center h-12 w-12">↻</div>
               <h2 className="text-2xl font-bold text-gray-900">3.1x</h2>
-              <p className="text-sm text-gray-500 mt-1">higher reply rate</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">higher reply rate</p>
             </div>
 
-            <div className="px-4">
-              <div className="text-green-600 text-3xl mb-2">⏱</div>
+            <div className="px-2 sm:px-4 flex flex-col items-center justify-center">
+              <div className="text-green-600 text-3xl mb-2 flex items-center justify-center h-12 w-12">⏱</div>
               <h2 className="text-2xl font-bold text-gray-900">2.5hrs</h2>
-              <p className="text-sm text-gray-500 mt-1">saved per campaign</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">saved per campaign</p>
             </div>
 
-            <div className="px-4">
-              <div className="text-green-600 text-3xl mb-2">📅</div>
+            <div className="px-2 sm:px-4 flex flex-col items-center justify-center">
+              <div className="text-green-600 text-3xl mb-2 flex items-center justify-center h-12 w-12">📅</div>
               <h2 className="text-2xl font-bold text-gray-900">12k</h2>
-              <p className="text-sm text-gray-500 mt-1">meetings booked</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">meetings booked</p>
             </div>
           </div>
         </div>
