@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Hero";
 import Contact from "./contact";
 import About from "./About";
-import ColorSwitcher from "./components/ColorSwitcher"; // ✅ add this
+// import ColorSwitcher from "./components/ColorSwitcher"; 
 
 function App() {
   return (
     <Router>
       {/* ✅ Global Component (visible everywhere) */}
-      <ColorSwitcher />
+      {/* <ColorSwitcher /> */}
 
       <Routes>
         <Route path="/" element={<Home />} />
